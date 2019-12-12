@@ -10,4 +10,4 @@ puts "Destroying All Users..."
 User.destroy_all
 
 puts "Creating Users"
-liam = User.create(username: "liamh", first_name: "Liam", last_name: "Healy", email: "lhealy0711@gmail.com")
+liam = User.create(username: "liam", first_name: "Liam", last_name: "Healy", email: "lhealy0711@gmail.com")
