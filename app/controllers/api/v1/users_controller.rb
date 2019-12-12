@@ -1,7 +1,13 @@
 class Api::V1::UsersController < ApplicationController
     
     def show
-        render json: { user: User.find_by(username: params[:id]) }
+        # render json: { user: User.find_by(username: params[:id]) }
+        user = User.find_by(username: params[:id])
+        options = {
+            include: [:posts, :responses, :streamers, :stream_followers]
+        }
+        render json: UserSerializer.new(user, options)
+        # render json: {user: user}
     end
 
     def create
