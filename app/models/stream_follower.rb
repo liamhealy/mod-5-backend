@@ -1,0 +1,2 @@
+class StreamFollower < ApplicationRecord
+end
