@@ -1,2 +1,0 @@
-class StreamFollowersController < ApplicationController
-end
