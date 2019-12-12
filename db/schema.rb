@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2019_12_12_181150) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.string "description"
     t.string "body"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_181150) do
   end
 
   create_table "responses", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_181150) do
   end
 
   create_table "stream_followers", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "streamer_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "streamer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["streamer_id"], name: "index_stream_followers_on_streamer_id"
