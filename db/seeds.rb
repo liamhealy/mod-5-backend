@@ -6,8 +6,49 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# --------- Seed Data ----------
+
+
+# ------------------------------
+# ------------------------------
+# ----------- Users ------------
+
 puts "Destroying All Users..."
 User.destroy_all
 
 puts "Creating Users"
 liam = User.create(username: "liam", first_name: "Liam", last_name: "Healy", email: "lhealy0711@gmail.com")
+
+# ------------------------------
+# ------------------------------
+# -------- Streamers -----------
+
+puts "Destroying All Streamers..."
+Streamer.destroy_all
+
+liam.streamers.create(name: "timthetatman")
+liam.streamers.create(name: "Ninja")
+liam.streamers.create(name: "shroud")
+liam.streamers.create(name: "DrDisrespect")
+Streamer.create(name: "DrLupo")
+
+# ------------------------------
+# ------------------------------
+# ----------- Posts ------------
+
+puts "Destroying All Posts..."
+Post.destroy_all
+
+liam.posts.create(
+    title: "My First Post",
+    description: "Just a quick post to test things out.",
+    body: "### This is my first post
+           #### Hey Everyone what's up this is my first post here.
+           `Just wanted to test this out`" 
+)
+
+# ------------------------------
+# ------------------------------
+# --------- Responses ----------
+
+# Nothing here yet...

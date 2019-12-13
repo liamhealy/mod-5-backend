@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-    has_many :posts
-    has_many :responses
-    has_many :stream_followers
+    has_many :posts, dependent: :destroy
+    has_many :responses, dependent: :destroy
+    has_many :stream_followers, dependent: :destroy
     has_many :streamers, through: :stream_followers
     
     validates :username, presence: true

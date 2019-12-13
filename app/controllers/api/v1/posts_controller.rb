@@ -1,7 +1,11 @@
 class Api::V1::PostsController < ApplicationController
 
     def index
-        render json: { posts: Post.all}
+        posts = Post.all
+        options = {
+            include: [:user]
+        }
+        render json: PostSerializer.new(posts)
     end
 
     def show
