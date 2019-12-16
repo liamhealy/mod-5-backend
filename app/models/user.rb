@@ -7,4 +7,9 @@ class User < ApplicationRecord
     validates :username, presence: true
     validates :username, length: { minimum: 2 }
     validates :email, presence: true
+
+    def self.get_user_details(name)
+        user = User.find_by(username: name)
+        {user: user, streamers: user.streamers, posts: user.posts}
+    end
 end

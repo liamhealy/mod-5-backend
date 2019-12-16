@@ -7,13 +7,17 @@ class Api::V1::UsersController < ApplicationController
             include: [:posts, :responses, :streamers, :stream_followers]
         }
         render json: UserSerializer.new(user, options)
+        # {user: User.get_user_details(params[:id])}
         # render json: {user: user}
     end
 
     def create
         user = User.new(create_params[:user])
+        options = {
+            include: [:posts, :responses, :streamers, :stream_followers]
+        }
         if user.save
-            render json: { user: user }
+            render json: UserSerializer.new(user, options)
         else
             render json: { error: "Something went wrong..." }
         end
@@ -21,8 +25,11 @@ class Api::V1::UsersController < ApplicationController
 
     def update
         user = User.find_by(id: params[:id])
+        options = {
+            include: [:posts, :responses, :streamers, :stream_followers]
+        }
         if user.update(update_params[:user])
-            render json: { user: user }
+            render json: UserSerializer.new(user, options)
         else
             render json: { error: "Something went wrong..." }
         end
