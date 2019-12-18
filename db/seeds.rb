@@ -93,6 +93,33 @@ liam.posts.create(
            ### Hey Everyone what's up this is my first post here.
            `Just wanted to test this out`" 
 )
+liam.posts.create(
+    title: "Markdown test",
+    description: "Just a quick post to test things out.",
+    body: "# Biggest header
+## Second biggest
+### Third biggest
+    
+**This is some bold text**
+    
+> This is a block quote
+    
+`this is a line of code`
+    
+```java
+public static void main(String[] args){
+    System.out.println('This is a java code block');
+}
+```
+
+---
+
+[This](https://www.markdownguide.org/cheat-sheet/) is a link
+to a markdown cheatsheet.
+
+![flatiron](https://static.timesofisrael.com/atlantajewishtimes/uploads/2018/10/BUSINESS-Briefs_Flatiron-School-logo_10-26-18.png)" 
+)
+
 
 # ------------------------------
 # ------------------------------

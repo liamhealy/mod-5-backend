@@ -15,7 +15,7 @@ class Api::V1::PostsController < ApplicationController
     def create
         post = Post.new(create_params[:post])
         if post.save
-            render json: { post: post }
+            render json: PostSerializer.new(post)
         else
             render json: { error: "Something went wrong..." }
         end
@@ -24,7 +24,7 @@ class Api::V1::PostsController < ApplicationController
     def update
         post = Post.find_by(id: params[:id])
         if post.update(update_params[:post])
-            render json: { post: post }
+            render json: PostSerializer.new(post)
         else
             render json: { error: "Something went wrong..." }
         end
