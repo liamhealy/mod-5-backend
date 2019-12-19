@@ -2,14 +2,14 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        options = {
-            include: [:user]
-        }
         render json: PostSerializer.new(posts)
     end
 
     def show
-        render json: { post: Post.find_by(id: params[:id]) }
+        post = Post.find_by(id: params[:id])
+        responses = post.responses.map { |response| {response: response, user: response.user}}
+
+        render json: { post: post, responses: responses }
     end
 
     def create

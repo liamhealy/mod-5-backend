@@ -18,6 +18,8 @@ User.destroy_all
 
 puts "Creating Users"
 liam = User.create(username: "liam", first_name: "Liam", last_name: "Healy", email: "lhealy0711@gmail.com")
+owen = User.create(username: "owen", first_name: "Owen", last_name: "Healy", email: "ohealy117@gmail.com")
+gary = User.create(username: "gary", first_name: "Gary", last_name: "Healy", email: "ghealy311@gmail.com")
 
 # ------------------------------
 # ------------------------------
@@ -57,14 +59,14 @@ System.out.println('Hello World');
 ```
 Anyway, sfnasfjnjdnfksjndfksndkfjbsdkbgskdjbgksjdbfkjsbdgkjsbdgnad;okfaodjfpoawhfgpouahdgkjsbdflkgjabsdklgjbaskldgbksadfbklasjdbflkajsdbfklsbf" 
 )
-liam.posts.create(
+owen.posts.create(
     title: "Another Post!",
     description: "Just a quick post to test things out.",
     body: "# This is my first post
 ### Hey Everyone what's up this is my first post here.
 `Just wanted to test this out`" 
 )
-liam.posts.create(
+gary.posts.create(
     title: "This project is cool",
     description: "Just a quick post to test things out.",
     body: "# Hello everyone
@@ -79,21 +81,21 @@ liam.posts.create(
            ### Hey Everyone what's up this is my first post here.
            `Just wanted to test this out` " 
 )
-liam.posts.create(
+owen.posts.create(
     title: "How I made a rails API",
     description: "Just a quick post to test things out.",
     body: "### This is my first post
            ### Hey Everyone what's up this is my first post here.
            `Just wanted to test this out`" 
 )
-liam.posts.create(
+gary.posts.create(
     title: "Why Ruby is really cool",
     description: "Just a quick post to test things out.",
     body: "### This is my first post
            ### Hey Everyone what's up this is my first post here.
            `Just wanted to test this out`" 
 )
-liam.posts.create(
+test_post = liam.posts.create(
     title: "Markdown test",
     description: "Just a quick post to test things out.",
     body: "# Biggest header
@@ -125,4 +127,11 @@ to a markdown cheatsheet.
 # ------------------------------
 # --------- Responses ----------
 
-# Nothing here yet...
+puts "Destroying All Responses..."
+Response.destroy_all
+
+test_post.responses.create(
+    user_id: liam.id,
+    post_id: test_post.id,
+    body: "# Testing responses..."
+)
