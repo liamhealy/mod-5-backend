@@ -27,7 +27,12 @@ class Api::V1::ResponsesController < ApplicationController
     end
 
     def update
-
+        response = Response.find_by(id: params[:id])
+        if response.update(update_params[:response])
+            render json: {response: response, user: response.user}
+        else
+            render json: {error: "Unable to update that response right now."}
+        end
     end
 
     def destroy
@@ -40,6 +45,14 @@ class Api::V1::ResponsesController < ApplicationController
         params.permit(
             response: [
                 :user_id, :post_id, :body
+            ]
+        )
+    end
+
+    def update_params
+        params.permit(
+            response: [
+                :id, :user_id, :post_id, :body
             ]
         )
     end
